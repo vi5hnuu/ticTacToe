@@ -1,0 +1,169 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #e1ffb1;
+}
+
+.header {
+  font-size: 3.5rem;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  color: #829460;
+  padding: 1rem 2.5rem;
+  font-family: cursive;
+  font-weight: bold;
+}
+.main {
+  display: flex;
+  flex-grow: 1;
+  align-self: center;
+  padding: 2rem;
+  border-radius: 5px;
+}
+.board {
+  position: relative;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 15em);
+  grid-template-rows: repeat(3, 15em);
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 5px;
+  background-color: #c7f2a4;
+}
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  background-color: #b6e388;
+  border-radius: 5px;
+  transition: all 1s;
+}
+.cell:hover {
+  transform: scale(1.03);
+}
+
+.btn--play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10%;
+  height: 10%;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: #eee;
+  transform: translateX(50%) translateY(-50%);
+  transition: all 1s;
+}
+.btn--play img {
+  width: 100%;
+}
+
+.btn--play:active,
+.btn--play:hover {
+  background-color: #b6e388;
+}
+
+/* ///Modal */
+.modal {
+  background-color: #fcffb2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 2rem;
+  border-radius: 5px;
+  z-index: 1000;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal .ques {
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
+}
+.modal .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 5px;
+  background-color: #c6e3a8;
+  transition: all 1s;
+}
+.btn:active,
+.btn:hover {
+  transform: scale(1.05);
+  background-color: #a9e46e;
+}
+
+.winnermodal {
+  background-color: #fcffb2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 2rem 5rem;
+  border-radius: 5px;
+  z-index: 1000;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.winnermodal .result {
+  display: flex;
+  font-size: 2.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.resImage {
+  width: 10rem;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+}
+
+.backdrop:enabled {
+  pointer-events: none;
+}
+
+.intro {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+.hidden {
+  display: none;
+}

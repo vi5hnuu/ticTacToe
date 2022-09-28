@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fevicon-start -->
+    <link rel="apple-touch-icon" sizes="57x57" href="./asset/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./asset/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./asset/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./asset/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./asset/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./asset/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./asset/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./asset/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./asset/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./asset/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./asset/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./asset/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./asset/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./asset/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- fevicon-end -->
+    <link rel="stylesheet" href="./asset/styles/styles.css">
+    <script src="./asset/js/script.js" defer></script>
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <header class="header">
+        <p>Tic Tac Toe</p>
+    </header>
+    <main class="main">
+        <div class="board">
+            <div class="btn--play"><img src="./asset/images/play.png" alt=""></div>
+            <div class="cell" data-id="1"="">-</div>
+            <div class="cell" data-id="2"="">-</div>
+            <div class="cell" data-id="3"="">-</div>
+            <div class="cell" data-id="4"="">-</div>
+            <div class="cell" data-id="5"="">-</div>
+            <div class="cell" data-id="6"="">-</div>
+            <div class="cell" data-id="7"="">-</div>
+            <div class="cell" data-id="8"="">-</div>
+            <div class="cell" data-id="9"="">-</div>
+        </div>
+    </main>
+
+    <div class="modal hidden">
+        <p class="ques">Do you want to play first ?</p>
+        <div class="actions">
+            <button class="btn btn--yes">Yes</button>
+            <button class="btn btn--no">No</button>
+        </div>
+    </div>
+    <div class="winnermodal hidden">
+        <div class="result">
+            <img class="resImage" src="./asset/images/win.png" alt="">
+            <p>You Won</p>
+        </div>
+        <button class="btn btn--ok">Ok</button>
+    </div>
+    <div class="backdrop hidden"></div>
+
+    <marquee class="intro">Vishnu kumar ,12017539,Btech cse hons. (2024) [DSA training mini project]</marquee>
+</body>
+
+</html>
