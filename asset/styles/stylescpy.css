@@ -24,26 +24,20 @@ body {
   padding: 1rem 2.5rem;
   font-family: cursive;
   font-weight: bold;
-  height: 10vh;
 }
 .main {
   display: flex;
   flex-grow: 1;
-  height: 80vh;
-  width: 40vw;
-  align-items: center;
   align-self: center;
-
   padding: 2rem;
   border-radius: 5px;
 }
 .board {
   position: relative;
-  width: 100%;
-  height: 40vw;
+  align-self: center;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 15em);
+  grid-template-rows: repeat(3, 15em);
   gap: 2rem;
   padding: 2rem;
   border-radius: 5px;
@@ -180,35 +174,4 @@ body {
 }
 .hidden {
   display: none;
-}
-
-@media (max-width: 800px) {
-  .main {
-    width: 60vw;
-  }
-  .board {
-    height: 60vw;
-  }
-  .intro {
-    width: 40%;
-    left: -7rem;
-    top: 4rem;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .main {
-    width: 90vw;
-  }
-  .board {
-    height: 90vw;
-  }
-  .intro {
-    width: 40%;
-    padding: 0.5rem;
-    left: -4rem;
-    top: 2rem;
-    font-size: 1rem;
-  }
 }
