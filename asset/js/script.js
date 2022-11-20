@@ -22,39 +22,45 @@ class TicTacToe {
         })
         document.querySelector('.btn--yes').addEventListener('click', () => {
             this.#humanTurn = true
+            this.#disablePlayBtn()
             this.#togglePlayerChoiceModal()
         })
         document.querySelector('.btn--no').addEventListener('click', () => {
             this.#humanTurn = false
-            this.#playComputer()
+            this.#disablePlayBtn()
             this.#togglePlayerChoiceModal()
+            this.#playComputer()
         })
     }
     #play() {
         //addListeners
         const boardContainer = document.querySelector('.board')
         boardContainer.addEventListener('click', (evnt) => {
-            if (this.#humanTurn) {
-                const cell = evnt.target
-                if (cell.classList.contains('cell')) {
-                    if (cell.innerHTML == '-') {
-                        if (this.#checkWinner())
-                            return
-                        cell.innerHTML = SYMBOL.HUMANSYMBOL
-                        const cellNo = cell.dataset.id
-                        const row = Math.floor((cellNo - 1) / TicTacToe.#SIDE)
-                        const col = Math.floor((cellNo - 1) % TicTacToe.#SIDE)
-                        this.#board[row][col] = SYMBOL.HUMANSYMBOL
-                        console.log(this.#board);
-                        this.#moveIndex++;
-                        this.#humanTurn = !this.#humanTurn
-                        if (this.#checkWinner())
-                            return
-                        this.#playComputer()
-                    }
+            this.#initilizeListenerFn(evnt)
+        })
+    }
+
+    #initilizeListenerFn(evnt) {
+        if (this.#humanTurn) {
+            const cell = evnt.target
+            if (cell.classList.contains('cell')) {
+                if (cell.innerHTML == '-') {
+                    if (this.#checkWinner())
+                        return
+                    cell.innerHTML = SYMBOL.HUMANSYMBOL
+                    const cellNo = cell.dataset.id
+                    const row = Math.floor((cellNo - 1) / TicTacToe.#SIDE)
+                    const col = Math.floor((cellNo - 1) % TicTacToe.#SIDE)
+                    this.#board[row][col] = SYMBOL.HUMANSYMBOL
+                    // console.log(this.#board);
+                    this.#moveIndex++;
+                    this.#humanTurn = !this.#humanTurn
+                    if (this.#checkWinner())
+                        return
+                    this.#playComputer()
                 }
             }
-        })
+        }
     }
 
     #togglePlayerChoiceModal() {
@@ -66,13 +72,17 @@ class TicTacToe {
         document.querySelector('.winnermodal').classList.toggle('hidden')
     }
     #checkWinner() {
-        if (this.#gameOver() == false && this.#moveIndex == TicTacToe.#SIDE * TicTacToe.#SIDE) {
+        if (this.#gameOver() == false && this.#moveIndex == TicTacToe.#SIDE * TicTacToe.#SIDE) {//game not over but no moves left
             const innerht = `
             <img class="resImage" src="./asset/images/prohibited.png" alt="prohibited">
             <p>It's a draw</p>
             `
             document.querySelector('.result').innerHTML = innerht
             this.#toggleWinnerModal()
+            /////remove all listener
+            this.#removeListenerOnBoard()
+            this.#enablePlayBtn()
+            //
             return true
         }
         else if (this.#gameOver()) {
@@ -92,9 +102,32 @@ class TicTacToe {
                 document.querySelector('.result').innerHTML = innerht
                 this.#toggleWinnerModal()
             }
+            /////remove all listener
+            this.#removeListenerOnBoard()
+            this.#enablePlayBtn()
+            //
             return true
         }
         return false
+    }
+    #removeListenerOnBoard() {
+        const boardContainer = document.querySelector('.board')
+        const newBoard = boardContainer.cloneNode(true)
+        const oldPlayBtn = boardContainer.querySelector('.btn--play')
+        const newPlayBtn = newBoard.querySelector('.btn--play')
+        newBoard.replaceChild(oldPlayBtn, newPlayBtn)
+        boardContainer.parentElement.replaceChild(newBoard, boardContainer)
+    }
+    #disablePlayBtn() {
+        const boardContainer = document.querySelector('.board')
+        const playBtn = boardContainer.querySelector('.btn--play')
+        playBtn.style.display = 'none';
+    }
+    #enablePlayBtn() {
+        const boardContainer = document.querySelector('.board')
+        const playBtn = boardContainer.querySelector('.btn--play')
+        playBtn.style.display = 'block';
+
     }
     #playComputer() {
         ///////////////////////
@@ -107,7 +140,7 @@ class TicTacToe {
         let x = 0
         let y = 0
 
-        let n = this.#bestMove(this.#moveIndex);
+        let n = this.#bestMove();
         console.log(n);
         x = Math.floor(n / TicTacToe.#SIDE);
         y = Math.floor(n % TicTacToe.#SIDE);
